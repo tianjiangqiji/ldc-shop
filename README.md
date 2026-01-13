@@ -115,56 +115,12 @@
 
 ### 2. 创建同步脚本
 
-1.  在你的仓库中，创建文件：`.github/workflows/sync.yml`
-2.  填入以下内容（这是强制同步脚本，会自动解决从 Vercel 克隆产生的历史不一致问题）：
-
-```yaml
-name: Upstream Sync
-
-permissions:
-  contents: write
-
-on:
-  schedule:
-    - cron: "0 0 * * *" # 每天运行一次
-  workflow_dispatch:
-
-jobs:
-  sync_latest_from_upstream:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout target repo
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 
-
-      - name: Sync Upstream
-        uses: actions/github-script@v6
-        with:
-          script: |
-            try {
-              // Configure Git
-              await exec.exec('git', ['config', '--global', 'user.name', 'GitHub Actions']);
-              await exec.exec('git', ['config', '--global', 'user.email', 'actions@github.com']);
-
-              // Add Upstream
-              await exec.exec('git', ['remote', 'add', 'upstream', 'https://github.com/chatgptuk/ldc-shop.git']);
-              await exec.exec('git', ['fetch', 'upstream']);
-
-              // Hard Reset to Upstream Main
-              // 使用 Reset --hard 直接覆盖，忽略历史差异和冲突
-              await exec.exec('git', ['checkout', 'main']);
-              await exec.exec('git', ['reset', '--hard', 'upstream/main']);
-
-              // Force Push
-              await exec.exec('git', ['push', 'origin', 'main', '--force']);
-              
-            } catch (error) {
-              core.setFailed(`Sync failed: ${error.message}`);
-            }
-```
-
-3.  提交更改。
+1.  如果在你的仓库中没有找到 `.github/workflows/sync.yml` 文件。
+2.  请直接复制本项目（上游仓库）中 [`.github/workflows/sync.yml`](https://github.com/chatgptuk/ldc-shop/blob/main/.github/workflows/sync.yml) 的全部内容。
+    *   **文件地址**: [https://github.com/chatgptuk/ldc-shop/blob/main/.github/workflows/sync.yml](https://github.com/chatgptuk/ldc-shop/blob/main/.github/workflows/sync.yml)
+3.  在你的仓库中新建目录 `.github/workflows`，并创建文件 `sync.yml`。
+4.  将复制的内容粘贴进去并保存提交。
+    *   *注意：请直接使用仓库里的版本，不要使用旧文档或其他地方的代码，以确保脚本逻辑与上游一致，避免同步冲突。*
 
 ### 3. 启用并测试
 
