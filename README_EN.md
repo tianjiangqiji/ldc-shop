@@ -4,10 +4,18 @@
 
 ---
 
-A robust, serverless virtual goods shop built with **Next.js 16**, **Vercel Postgres**, **Shadcn UI**, and **Linux DO Connect**.
+A robust, serverless virtual goods shop built with **Next.js 16**, **Shadcn UI**, and **Linux DO Connect**.
 
-> 💡 **Also available as Cloudflare Workers version (Next.js + OpenNext + D1):** [View deployment guide → `_workers_next/README.md`](./_workers_next/README.md)
-> This is a full-stack Next.js implementation based on OpenNext adapter, running on Cloudflare Workers with D1 database, providing the same feature set as the Vercel version.
+> 🚀 **Recommended: Cloudflare Workers Deployment**
+> 
+> | Comparison | Cloudflare Workers | Vercel |
+> |------------|-------------------|--------|
+> | Free Requests | **100K/day** | Limited |
+> | Database | **D1 Free 5GB** | Postgres quota |
+> | Cold Start | **Near zero** | Has delay |
+> | Global Edge | ✅ Worldwide | Partial |
+> 
+> 👉 **[View Workers Deployment Guide → `_workers_next/README.md`](./_workers_next/README.md)**
 
 ## ✨ Features
 - **Modern Stack**: Next.js 16 (App Router), Tailwind CSS, TypeScript.
@@ -49,17 +57,19 @@ A robust, serverless virtual goods shop built with **Next.js 16**, **Vercel Post
     - 🌓 **Light/Dark/System themes**.
     - ⏱️ **Auto Update (Upstream Sync)**: GitHub Actions workflow included for Fork users to auto-sync upstream changes and trigger Vercel deploy.
 
-## 🚀 One-Click Deploy
+## 🚀 Deployment Guide
+
+### ⭐ Recommended: Cloudflare Workers
+
+Higher free tier, faster global access, no cold start delay.
+
+👉 **[View Full Deployment Guide → `_workers_next/README.md`](./_workers_next/README.md)**
+
+### Alternative: Vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchatgptuk%2Fldc-shop&env=OAUTH_CLIENT_ID,OAUTH_CLIENT_SECRET,MERCHANT_ID,MERCHANT_KEY,ADMIN_USERS,NEXT_PUBLIC_APP_URL&envDescription=Required%20Environment%20Variables&project-name=ldc-shop&repository-name=ldc-shop&stores=%5B%7B%22type%22%3A%22postgres%22%7D%5D)
 
-Click the button above to deploy your own instance to Vercel.
-
-The database (Vercel Postgres) will be automatically provisioned and linked.
-
-## ☁️ Cloudflare Workers Command Deploy
-
-See [`_workers_next/README.md`](./_workers_next/README.md) for Wrangler-based deployment and configuration steps.
+Click the button above for one-click deploy to Vercel with auto-provisioned Postgres database.
 
 ## 💡 Recommendation: Custom Domain
 

@@ -4,10 +4,18 @@
 
 ---
 
-基于 **Next.js 16**、**Vercel Postgres**、**Shadcn UI** 和 **Linux DO Connect** 构建的强大的无服务器虚拟商品商店。
+基于 **Next.js 16**、**Shadcn UI** 和 **Linux DO Connect** 构建的强大的无服务器虚拟商品商店。
 
-> 💡 **也提供 Cloudflare Workers 版本 (Next.js + OpenNext + D1)：** [查看部署指南 → `_workers_next/README.md`](./_workers_next/README.md)
-> 这是一个基于 OpenNext 适配器的全栈 Next.js 实现，运行在 Cloudflare Workers 上并使用 D1 数据库，提供与 Vercel 版本一致的功能体验。
+> 🚀 **推荐部署方式：Cloudflare Workers 版本**
+> 
+> | 对比项 | Cloudflare Workers | Vercel |
+> |--------|-------------------|--------|
+> | 免费请求 | **10 万次/天** | 有限制 |
+> | 数据库 | **D1 免费 5GB** | Postgres 有限额 |
+> | 冷启动 | **几乎无延迟** | 有冷启动 |
+> | 全球边缘 | ✅ 全球节点 | 部分地区 |
+> 
+> 👉 **[查看 Workers 部署指南 → `_workers_next/README.md`](./_workers_next/README.md)**
 
 ## ✨ 特性
 - **现代技术栈**: Next.js 16 (App Router), Tailwind CSS, TypeScript.
@@ -65,17 +73,19 @@
     - 🌓 **浅色/深色/跟随系统**。
     - ⏱️ **自动更新 (Upstream Sync)**: 提供 GitHub Actions 脚本，Fork 用户可启用自动同步上游最新代码并触发 Vercel 部署。
 
-## 🚀 一键部署
+## 🚀 部署指南
+
+### ⭐ 推荐：Cloudflare Workers 部署
+
+免费额度更高、全球访问更快、无冷启动延迟。
+
+👉 **[查看完整部署指南 → `_workers_next/README.md`](./_workers_next/README.md)**
+
+### 备选：Vercel 部署
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fchatgptuk%2Fldc-shop&env=OAUTH_CLIENT_ID,OAUTH_CLIENT_SECRET,MERCHANT_ID,MERCHANT_KEY,ADMIN_USERS,NEXT_PUBLIC_APP_URL&envDescription=Required%20Environment%20Variables&project-name=ldc-shop&repository-name=ldc-shop&stores=%5B%7B%22type%22%3A%22postgres%22%7D%5D)
 
-点击上方按钮将您自己的实例部署到 Vercel。
-
-数据库 (Vercel Postgres) 将会自动配置并链接。
-
-## ☁️ Cloudflare Workers 部署
-
-请参考 [`_workers_next/README.md`](./_workers_next/README.md) 查看详细的网页部署指南 (Workers Builds)。
+点击上方按钮一键部署到 Vercel，数据库 (Vercel Postgres) 将自动配置。
 
 
 
